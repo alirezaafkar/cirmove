@@ -4,6 +4,10 @@
         <attr name="cirmove_x" format="integer"/>
         <attr name="cirmove_y" format="integer"/>
         <attr name="cirmove_color" format="color"/>
+        <attr name="cirmove_min_x" format="integer"/>
+        <attr name="cirmove_min_y" format="integer"/>
+        <attr name="cirmove_max_x" format="integer"/>
+        <attr name="cirmove_max_y" format="integer"/>
         <attr name="cirmove_min_alpha" format="float"/>
         <attr name="cirmove_max_alpha" format="float"/>
         <attr name="cirmove_preview" format="boolean"/>

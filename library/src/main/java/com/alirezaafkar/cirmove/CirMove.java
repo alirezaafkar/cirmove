@@ -27,9 +27,17 @@ public class CirMove extends View {
     private static final boolean DEFAULT_AUTO_START = true;
     private static final int DEFAULT_REPEAT_MODE = ValueAnimator.REVERSE;
     private static final int DEFAULT_REPEAT_COUNT = ValueAnimator.INFINITE;
+    private static final int DEFAULT_MAX_Y = 300;
+    private static final int DEFAULT_MAX_X = 100;
+    private static final int DEFAULT_MIN_Y = -300;
+    private static final int DEFAULT_MIN_X = -100;
 
-    private int mX = getRandomNumber();
-    private int mY = getRandomNumber();
+    private int mX = getRandomX();
+    private int mY = getRandomY();
+    private int mMinY = DEFAULT_MIN_Y;
+    private int mMinX = DEFAULT_MIN_X;
+    private int mMaxX = DEFAULT_MAX_X;
+    private int mMaxY = DEFAULT_MAX_Y;
     private int mColor = DEFAULT_COLOR;
     private int mStartDelay = DEFAULT_DELAY;
     private int mDuration = DEFAULT_DURATION;
@@ -63,9 +71,13 @@ public class CirMove extends View {
 
         TypedArray attrsArray = getContext()
                 .obtainStyledAttributes(attrs, R.styleable.CirMove);
-        mX = attrsArray.getInteger(R.styleable.CirMove_cirmove_x, getRandomNumber());
-        mY = attrsArray.getInteger(R.styleable.CirMove_cirmove_y, getRandomNumber());
+        mX = attrsArray.getInteger(R.styleable.CirMove_cirmove_x, getRandomX());
+        mY = attrsArray.getInteger(R.styleable.CirMove_cirmove_y, getRandomY());
         mColor = attrsArray.getColor(R.styleable.CirMove_cirmove_color, DEFAULT_COLOR);
+        mMinX = attrsArray.getInteger(R.styleable.CirMove_cirmove_min_x, DEFAULT_MIN_X);
+        mMinY = attrsArray.getInteger(R.styleable.CirMove_cirmove_min_y, DEFAULT_MIN_Y);
+        mMaxX = attrsArray.getInteger(R.styleable.CirMove_cirmove_max_x, DEFAULT_MAX_X);
+        mMaxY = attrsArray.getInteger(R.styleable.CirMove_cirmove_max_y, DEFAULT_MAX_Y);
         mMinAlpha = attrsArray.getFloat(R.styleable.CirMove_cirmove_min_alpha, DEFAULT_MIN_ALPHA);
         mMaxAlpha = attrsArray.getFloat(R.styleable.CirMove_cirmove_max_alpha, DEFAULT_MAX_ALPHA);
         mDuration = attrsArray.getInteger(R.styleable.CirMove_cirmove_duration, DEFAULT_DURATION);
@@ -121,8 +133,17 @@ public class CirMove extends View {
         }
     }
 
-    private int getRandomNumber() {
-        return new Random().nextInt(100) - 100;
+    private int getRandomX() {
+        return getRandomNumber(mMinX, mMaxX);
+    }
+
+    private int getRandomY() {
+        return getRandomNumber(mMinY, mMaxY);
+    }
+
+    private int getRandomNumber(int min, int max) {
+        if (min > max) min = 0;
+        return min + new Random().nextInt(max - min + 1);
     }
 
     public void setDuration(int duration) {

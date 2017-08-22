@@ -1,13 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center">
+    android:gravity="center"
+    android:orientation="vertical">
 
-    <com.alirezaafkar.cirmove.CirMoveLayout
-        android:layout_width="130dp"
-        android:layout_height="40dp"
-        android:background="@color/colorAccent"/>
+    <FrameLayout
+        android:layout_width="155dp"
+        android:layout_height="55dp"
+        android:background="@drawable/background"
+        android:elevation="4dp"
+        tools:ignore="UnusedAttribute">
+
+        <com.alirezaafkar.cirmove.CirMove
+            style="@style/cirmove_style"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            app:cirmove_x="60"
+            app:cirmove_y="-50"/>
+
+        <com.alirezaafkar.cirmove.CirMove
+            style="@style/cirmove_style"
+            android:layout_width="5dp"
+            android:layout_height="5dp"
+            app:cirmove_x="-60"
+            app:cirmove_y="-50"/>
+
+        <com.alirezaafkar.cirmove.CirMove
+            style="@style/cirmove_style"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            app:cirmove_x="300"
+            app:cirmove_y="-50"/>
+
+        <com.alirezaafkar.cirmove.CirMove
+            style="@style/cirmove_style"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            app:cirmove_x="130"
+            app:cirmove_y="-40"/>
+
+        <com.alirezaafkar.cirmove.CirMove
+            style="@style/cirmove_style"
+            android:layout_width="7dp"
+            android:layout_height="7dp"
+            app:cirmove_x="700"
+            app:cirmove_y="40"/>
+
+        <com.alirezaafkar.cirmove.CirMove
+            style="@style/cirmove_style"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            app:cirmove_x="-60"
+            app:cirmove_y="50"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="155dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/background"
+        android:elevation="4dp"
+        tools:ignore="UnusedAttribute">
+
+        <com.alirezaafkar.cirmove.CirMove
+            style="@style/cirmove_style.reverse"
+            android:layout_width="10dp"
+            android:layout_height="10dp"/>
+
+        <com.alirezaafkar.cirmove.CirMove
+            style="@style/cirmove_style.reverse"
+            android:layout_width="5dp"
+            android:layout_height="5dp"/>
+
+        <com.alirezaafkar.cirmove.CirMove
+            style="@style/cirmove_style.reverse"
+            android:layout_width="15dp"
+            android:layout_height="15dp"/>
+
+        <com.alirezaafkar.cirmove.CirMove
+            style="@style/cirmove_style.reverse"
+            android:layout_width="12dp"
+            android:layout_height="12dp"/>
+
+        <com.alirezaafkar.cirmove.CirMove
+            style="@style/cirmove_style.reverse"
+            android:layout_width="7dp"
+            android:layout_height="7dp"/>
+
+        <com.alirezaafkar.cirmove.CirMove
+            style="@style/cirmove_style.reverse"
+            android:layout_width="8dp"
+            android:layout_height="8dp"/>
+    </FrameLayout>
+
 
 </LinearLayout>

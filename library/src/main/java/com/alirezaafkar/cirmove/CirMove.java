@@ -19,18 +19,20 @@ import java.util.Random;
 
 public class CirMove extends View {
     private static final int DEFAULT_DELAY = 0;
+    private static final int DEFAULT_MAX_Y = 300;
+    private static final int DEFAULT_MAX_X = 100;
+    private static final int DEFAULT_MIN_Y = -300;
+    private static final int DEFAULT_MIN_X = -100;
     private static final int DEFAULT_DURATION = 3000;
     private static final float DEFAULT_MAX_ALPHA = 1f;
     private static final float DEFAULT_MIN_ALPHA = 0f;
+    private static final float DEFAULT_MAX_SCALE = 1f;
+    private static final float DEFAULT_MIN_SCALE = 1f;
     private static final boolean DEFAULT_PREVIEW = false;
     private static final int DEFAULT_COLOR = Color.YELLOW;
     private static final boolean DEFAULT_AUTO_START = true;
     private static final int DEFAULT_REPEAT_MODE = ValueAnimator.REVERSE;
     private static final int DEFAULT_REPEAT_COUNT = ValueAnimator.INFINITE;
-    private static final int DEFAULT_MAX_Y = 300;
-    private static final int DEFAULT_MAX_X = 100;
-    private static final int DEFAULT_MIN_Y = -300;
-    private static final int DEFAULT_MIN_X = -100;
 
     private int mX = getRandomX();
     private int mY = getRandomY();
@@ -41,6 +43,8 @@ public class CirMove extends View {
     private int mColor = DEFAULT_COLOR;
     private int mStartDelay = DEFAULT_DELAY;
     private int mDuration = DEFAULT_DURATION;
+    private float mMinScale = DEFAULT_MIN_SCALE;
+    private float mMaxScale = DEFAULT_MAX_SCALE;
     private float mMaxAlpha = DEFAULT_MAX_ALPHA;
     private float mMinAlpha = DEFAULT_MIN_ALPHA;
     private int mRepeatMode = DEFAULT_REPEAT_MODE;
@@ -80,6 +84,8 @@ public class CirMove extends View {
         mMaxY = attrsArray.getInteger(R.styleable.CirMove_cirmove_max_y, DEFAULT_MAX_Y);
         mMinAlpha = attrsArray.getFloat(R.styleable.CirMove_cirmove_min_alpha, DEFAULT_MIN_ALPHA);
         mMaxAlpha = attrsArray.getFloat(R.styleable.CirMove_cirmove_max_alpha, DEFAULT_MAX_ALPHA);
+        mMinScale = attrsArray.getFloat(R.styleable.CirMove_cirmove_min_scale, DEFAULT_MIN_SCALE);
+        mMaxScale = attrsArray.getFloat(R.styleable.CirMove_cirmove_max_scale, DEFAULT_MAX_SCALE);
         mDuration = attrsArray.getInteger(R.styleable.CirMove_cirmove_duration, DEFAULT_DURATION);
         mStartDelay = attrsArray.getInteger(R.styleable.CirMove_cirmove_start_delay, DEFAULT_DELAY);
 
@@ -119,12 +125,20 @@ public class CirMove extends View {
         moveX.setRepeatMode(repeatMode);
         moveX.setRepeatCount(repeatCount);
 
-        ObjectAnimator alpha = ObjectAnimator.ofFloat(this, "alpha", mMaxAlpha, mMinAlpha);
+        ObjectAnimator alpha = ObjectAnimator.ofFloat(this, "Alpha", mMaxAlpha, mMinAlpha);
         alpha.setRepeatMode(repeatMode);
         alpha.setRepeatCount(repeatCount);
 
+        ObjectAnimator scaleX = ObjectAnimator.ofFloat(this, "ScaleX", mMinScale, mMaxScale);
+        scaleX.setRepeatMode(repeatMode);
+        scaleX.setRepeatCount(repeatCount);
+
+        ObjectAnimator scaleY = ObjectAnimator.ofFloat(this, "ScaleY", mMinScale, mMaxScale);
+        scaleY.setRepeatMode(repeatMode);
+        scaleY.setRepeatCount(repeatCount);
+
         mAnimationSet = new AnimatorSet();
-        mAnimationSet.playTogether(moveX, moveY, alpha);
+        mAnimationSet.playTogether(moveX, moveY, alpha, scaleX, scaleY);
         mAnimationSet.setStartDelay(mStartDelay);
         mAnimationSet.setDuration(mDuration);
 

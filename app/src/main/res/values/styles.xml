@@ -11,7 +11,7 @@
     <style name="cirmove_style">
         <item name="cirmove_start_delay">500</item>
         <item name="cirmove_color">@color/white</item>
-        <item name="cirmove_repeat_mode">restart</item>
+        <item name="cirmove_repeat_mode">reverse</item>
         <item name="cirmove_max_alpha">0.7</item>
         <item name="android:layout_gravity">center</item>
     </style>
@@ -21,7 +21,7 @@
         <item name="cirmove_max_y">700</item>
         <item name="cirmove_min_y">-700</item>
         <item name="cirmove_min_x">-300</item>
-        <item name="cirmove_repeat_mode">reverse</item>
+        <item name="cirmove_repeat_mode">restart</item>
     </style>
 
 

@@ -10,6 +10,8 @@
         <attr name="cirmove_max_y" format="integer"/>
         <attr name="cirmove_min_alpha" format="float"/>
         <attr name="cirmove_max_alpha" format="float"/>
+        <attr name="cirmove_min_scale" format="float"/>
+        <attr name="cirmove_max_scale" format="float"/>
         <attr name="cirmove_preview" format="boolean"/>
         <attr name="cirmove_duration" format="integer"/>
         <attr name="cirmove_auto_start" format="boolean"/>
